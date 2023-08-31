@@ -1,0 +1,159 @@
+<style>
+    table.roundedCorners {
+        border-radius: 13px;
+        border-spacing: 0;
+    }
+
+    .podium {
+        display: flex;
+        justify-content: center;
+        margin-top: 40px;
+        font-size: 15px;
+        align-items: flex-end;
+    }
+
+    .third {
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+    }
+
+    .second {
+        margin-top: 20px;
+
+    }
+
+    .tpod {
+        display: flex;
+        justify-content: center;
+        height: 90px;
+        width: 100px;
+        border-radius: 4px;
+        background: rgb(240, 247, 255);
+        background: linear-gradient(0deg, rgba(240, 247, 255, 0.5) 0%, rgba(230, 207, 185, 1) 39%, rgba(205, 127, 50, 1) 100%);
+        border: 1px solid rgba(205, 127, 50, 1);
+
+    }
+
+    .fpod {
+        display: flex;
+        justify-content: center;
+        height: 130px;
+        width: 100px;
+
+        background: rgb(255, 255, 255);
+        background: linear-gradient(0deg, rgba(240, 247, 255, .5) 0%, rgba(255, 230, 183, 1) 49%, rgba(255, 186, 54, 1) 100%);
+        border-radius: 4px;
+        border: 1px solid rgba(255, 186, 54, 1);
+
+
+    }
+
+    .spod {
+        display: flex;
+        justify-content: center;
+        height: 110px;
+        width: 100px;
+        background: rgb(255, 255, 255);
+        background: linear-gradient(0deg, rgba(240, 247, 255, .5) 0%, rgba(234, 234, 234, 1) 39%, rgba(201, 201, 201, 1) 100%);
+        border-radius: 4px;
+        border: 1px solid rgba(201, 201, 201, 1);
+
+    }
+   
+    .name {
+        text-align: center;
+        width: 100px;
+    }
+
+    .user {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 60%;
+    }
+
+   
+    .epimg{
+        transform:translateX(-12.5px)
+    }
+    .lpimg{
+        transform:translateX(12.5px)
+    }
+</style>
+<div class="bg-white rounded-md shadow-md my-2 pb-1">
+    <div class="py-3 pl-6 font-medium text-lg border-b-2">Leaderboard</div>
+    <div class="pod" style="display:flex ; justify-content: space-evenly;">
+        <div class="podium pb-6">
+            <div class="third">
+                <div class="user"> <img src="{{top_solousers.2.img.url}}" width="65px" alt="profile pic" border="0"
+                        style="border-radius:9999px; text-align:center;" class="pimg">
+                </div>
+                <p class="name">{{top_solousers.2.firstname}} </p>
+                <p class="tpod"></p>
+            </div>
+            <div class="first">
+                <div class="user"> <img src="{{top_solousers.0.img.url}}" width="65px" alt="profile pic" border="0"
+                        style="border-radius:9999px; text-align:center;" class="pimg">
+                </div>
+                <p class="name">{{top_solousers.0.firstname}} </p>
+                <p class="fpod"></p>
+            </div>
+            <div class="second">
+                <div class="user"> <img src="{{top_solousers.1.img.url}}" width="65px" alt="profile pic" border="0"
+                        style="border-radius:9999px; text-align:center;" class="pimg">
+                </div>
+                <p class="name">{{top_solousers.1.firstname}}</p>
+                <p class="spod"></p>
+            </div>
+        </div>
+
+        <div class="podium pb-6">
+            <div class="third">
+                <div class="teamuser" style="display:flex; justify-content: space-around;"> <img
+                    src="{{grpusers.2.leader.img.url}}" width="50px" alt="profile pic" border="0"
+                    style="border-radius:9999px; text-align:center ; height: 50px;" class="lpimg">
+                <img src="{{grpusers.2.executive.img.url}}" width="50px" alt="profile pic" border="0"
+                    style="border-radius:9999px; text-align:center; height: 50px;" class="epimg">
+            </div>
+           
+                <p class="name">{{grpusers.2.leader.firstname}}</p>
+                <p class="name">{{grpusers.2.executive.firstname}}</p>
+           
+                <p class="tpod"></p>
+            </div>
+            <div class="first">
+                <div class="teamuser" style="display:flex; justify-content: space-around;"> <img
+                        src="{{grpusers.0.leader.img.url}}" width="50px" alt="profile pic" border="0"
+                        style="border-radius:9999px; text-align:center ; height: 50px;" class="lpimg">
+                    <img src="{{grpusers.0.executive.img.url}}" width="50px" alt="profile pic" border="0"
+                        style="border-radius:9999px; text-align:center; height: 50px;" class="epimg">
+                </div>
+                
+                    <p class="name">{{grpusers.0.leader.firstname}}</p>
+                    <p class="name">{{grpusers.0.executive.firstname}}</p>
+               
+
+                <p class="fpod"></p>
+            </div>
+            <div class="second">
+                <div class="teamuser" style="display:flex; justify-content: space-around;"> <img
+                    src="{{grpusers.1.leader.img.url}}" width="50px" alt="profile pic" border="0"
+                    style="border-radius:9999px; text-align:center ; height: 50px;" class="lpimg">
+                <img src="{{grpusers.1.executive.img.url}}" width="50px" alt="profile pic" border="0"
+                    style="border-radius:9999px; text-align:center; height: 50px;" class="epimg">
+            </div>
+            
+                <p class="name">{{grpusers.1.leader.firstname}}</p>
+                <p class="name">{{grpusers.1.executive.firstname}}</p>
+            
+                <p class="spod"></p>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>

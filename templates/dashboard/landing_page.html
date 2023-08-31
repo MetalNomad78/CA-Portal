@@ -1,0 +1,1105 @@
+{% extends '../basicbootstrap.html'%} {% load static %} {%block title%}Alcheringa{%endblock%} {% block style %}
+<link rel="stylesheet" href="{% static 'css/landing_style.css' %}"> {% endblock %} {% block body %}
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .header {
+        background: linear-gradient(0deg, rgba(0, 17, 38, 0.22), rgba(0, 17, 38, 0.22)), url(/static/images/bg.png);
+        min-height: 100vh;
+        width: 100%;
+        background-size: cover;
+        background-position: center;
+        position: relative;
+    }
+
+    nav {
+        position: fixed;
+        display: flex;
+        opacity: 100%;
+        padding: 2% 6%;
+        justify-content: space-between;
+        align-items: center;
+        width: 90%;
+        transition: background 0.5s;
+        z-index: 5;
+    }
+
+    nav.scrolled {
+        background: linear-gradient(rgba(255, 255, 255, .5), rgba(255, 255, 255, .5));
+
+        z-index: 5;
+    }
+
+    nav img {
+        width: 209px;
+    }
+
+    .nav-links {
+        flex: 1;
+        text-align: right;
+    }
+
+    .nav-links ul li {
+        list-style: none;
+        display: inline-block;
+        padding: 8px 28px;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .nav-links ul li a {
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+    #navlink5 {
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+    #navlink5:hover {
+        color: #109cf1;
+        transition: 0.5s;
+    }
+
+    #navlink1.scroll,
+    #navlink2.scroll,
+    #navlink3.scroll,
+    #navlink4.scroll,
+    #navlink5.scroll {
+        color: #334d6e;
+    }
+
+    .nav-links ul li a:hover,
+    #navlink1.scroll:hover,
+    #navlink2.scroll:hover,
+    #navlink3.scroll:hover,
+    #navlink4.scroll:hover,
+    #navlink5.scroll:hover {
+        color: #109cf1;
+        transition: 0.5s;
+    }
+
+    #join-button {
+        border: 1px solid #109cf1;
+        box-sizing: border-box;
+        border-radius: 4px;
+        background-color: #ffffff;
+        padding: 7px 0px;
+    }
+
+    #join-button-text {
+        padding: 10px 25px;
+    }
+
+    #join-button.scroll {
+        border: 1px solid #ffffff;
+        box-sizing: border-box;
+        border-radius: 4px;
+        background-color: #109cf1;
+    }
+
+    #join-button a {
+        font-weight: 600;
+        color: #109cf1;
+    }
+
+    #join-button-text.scroll {
+        color: #ffffff;
+    }
+
+    #join-button a:hover {
+        color: #334d6e;
+        transition: 0.5s;
+    }
+
+    .backdrop {
+        background-color: blue;
+    }
+
+    .text-box {
+        width: 90%;
+        left: 55%;
+        top: 50%;
+        color: #ffffff;
+        position: absolute;
+        transform: translate(-50%, -50%);
+    }
+
+    .text-box h2 {
+        font-weight: normal;
+        font-size: 40px;
+        padding-bottom: 10px;
+    }
+
+    .text-box h1 {
+        font-weight: 600;
+        font-size: 60px;
+        padding-bottom: 10px;
+    }
+
+    .text-box p {
+        width: 38%;
+        font-weight: 400;
+        padding-bottom: 20px;
+    }
+
+    .hero-btn {
+        border: 1px solid #109cf1;
+        display: inline-block;
+        text-decoration: none;
+        padding: 8px 28px;
+        box-sizing: border-box;
+        border-radius: 4px;
+        background-color: #109cf1;
+        color: #ffffff;
+        position: relative;
+        cursor: pointer;
+    }
+
+    .hero-btn:hover {
+        color: #334d6e;
+        transition: 0.5s;
+    }
+
+    .iframe-container {
+        position: relative;
+        margin-top: 5%;
+        margin-left: 17%;
+        padding-bottom: 56.25%;
+        height: 0;
+    }
+
+    .iframe-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 80%;
+        height: 80%;
+    }
+
+    .video-text p {
+        margin-top: -10%;
+        text-align: center;
+    }
+
+    .joining {
+        text-align: center;
+        color: #109cf1;
+
+        font-size: 38px;
+        margin-top: 100px;
+
+        font-size: 45px;
+
+
+
+        margin-top: 100px;
+
+
+
+        margin-bottom: 60px;
+        font-weight: 500;
+    }
+
+    #faq {
+        margin-top: -120px;
+    }
+
+    .text {
+        text-align: center;
+        margin-left: 100px;
+        margin-right: 100px;
+    }
+
+    .join {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        padding-bottom: 5%;
+    }
+
+    .join div {
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .join div img {
+        text-align: center;
+    }
+
+    .join div h2 {
+        text-align: center;
+        color: #334d6e;
+        font-weight: 500;
+    }
+
+    .join div p {
+        text-align: center;
+        color: #707683;
+        font-weight: 400;
+    }
+
+    #blue {
+        background-color: #109cf1;
+        margin: 60px 0px 60px 0px;
+    }
+
+    #res {
+        color: white;
+        text-align: center;
+        padding: 100px 0px 0px 0px;
+        font-size: 32px;
+    }
+
+    #man {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    #man img {
+        width: 30%;
+        height: 30%;
+        margin-top: 7%;
+        margin-left: 9%;
+        margin-bottom: 9%;
+    }
+
+    .box-text {
+        background-color: #f3f6f8;
+        padding: 4% 4%;
+        border-radius: 4px;
+        margin: 7%;
+    }
+
+    .box-text div h2 {
+        margin-bottom: 2%;
+        color: #334d6e;
+    }
+
+    .box-text div p {
+        margin-bottom: 4%;
+        color: #707683;
+    }
+
+    nav .fa {
+        display: none;
+    }
+
+    #fly {
+        width: 700px;
+        height: 700px;
+        align-items: left;
+        margin-left: 0px;
+
+    }
+
+    #man #choose {
+        position: relative;
+        display: inline-block;
+        margin-right: 40px;
+    }
+
+    .image-sponsor {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .hover-text:hover {
+        color: #334d6e;
+        transition: 0.5s;
+    }
+
+    .que {
+        background: lightblue;
+        /*border: 60px;
+    display: block;
+    border-block-color: lightblue;
+    block-size: 40px;
+    border-color: lightblue;*/
+        margin: 40px;
+        margin-bottom: 0px;
+        border-radius: 5px;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        -ms-border-radius: 5px;
+        -o-border-radius: 5px;
+    }
+
+    .que h4 {
+        padding-top: 8px;
+        margin-right: 20px;
+        margin-top: 20px;
+        margin-left: 20px;
+        margin-bottom: 0px;
+        font-size: 20px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .que p {
+        visibility: hidden;
+        opacity: 0;
+        display: none;
+        transition: all 0.5 ease;
+        margin-left: 20px;
+        margin-bottom: 20px;
+        -webkit-transition: all 0.5 ease;
+        -moz-transition: all 0.5 ease;
+        -ms-transition: all 0.5 ease;
+        -o-transition: all 0.5 ease;
+    }
+
+    [id^=btn]:hover+p {
+        display: block;
+        visibility: visible;
+        opacity: 1;
+    }
+
+
+    /*.que h4:focus .down {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+}*/
+
+    .que input {
+        background: lightblue;
+        display: inline;
+        position: relative;
+        left: 97%;
+        bottom: 30px;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    @media only screen and (max-width: 890px) {
+        #man {
+            flex-direction: column;
+        }
+
+        #man img {
+            width: 50%;
+            height: 50%;
+            margin-left: 0%;
+        }
+
+        .join {
+            padding: 5%;
+        }
+    }
+
+    @media only screen and (max-width: 600px) {
+
+        html,
+        body {
+            overflow-x: hidden;
+        }
+
+        .nav-links ul li {
+            display: block;
+        }
+
+        .nav-links ul li a:hover {
+            color: #334d6e;
+            transition: 0.5s;
+        }
+
+        #join-button {
+            padding: 7px 8px;
+        }
+
+        .nav-links {
+            position: absolute;
+            background-color: #109cf1;
+            height: 100vh;
+            width: 200px;
+            top: 0;
+            right: -200px;
+            text-align: left;
+            z-index: 2;
+            transition: 0.5s;
+        }
+
+        nav .fa {
+            display: block;
+            margin: 10px;
+            font-size: 22px;
+            cursor: pointer;
+            color: #334d6e;
+        }
+
+        .nav-links ul {
+            padding: 30px;
+        }
+
+        .joining {
+            text-align: center;
+            font-size: 30px;
+        }
+
+        .join {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .join div img {
+            width: 60%;
+            height: 60%;
+            margin-left: 20%;
+        }
+
+        .text-box h2 {
+            font-size: 30px;
+            text-align: center;
+            margin-left: -60%;
+        }
+
+        .text-box h1 {
+            font-size: 30px;
+            text-align: center;
+            margin-left: -60%;
+        }
+
+        .text-box p {
+            text-align: center;
+        }
+
+        .text-box {
+            width: 90%;
+            left: 40%;
+            top: 50%;
+            transform: translate(-10%, -60%);
+        }
+
+
+
+
+    }
+
+    .benefit {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+
+
+
+
+    }
+
+    .benefit1 {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+        justify-items: center;
+        text-align: center;
+    }
+
+    .benefit div h2 {
+        color: #334d6e;
+        font-weight: 500;
+    }
+
+    .benefit1 div p {
+        color: #707683;
+        font-weight: 400;
+    }
+
+    .benefit img {
+        display: inline;
+        width: 240px;
+        height: 240px;
+    }
+
+    .benefit2 {
+        padding-left: 110px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        text-align: center;
+    }
+
+    .benefit2 div h2 {
+        color: #334d6e;
+        font-weight: 500;
+    }
+
+    .benefit2 div p {
+        color: #707683;
+        font-weight: 400;
+    }
+
+    .benefit2 img {
+        display: inline;
+        width: 240px;
+        height: 240px;
+    }
+</style>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+    crossorigin="anonymous"></script>
+
+<section class="header">
+    <nav style="width:100%;">
+        <a href="https://alcheringa.in/"><img src="{% static 'images/logo.png' %}" alt="Logo" /></a>
+        <div class="nav-links" id="navLinks">
+            <i class="fa fa-times" onclick="hideMenu()"></i>
+            <ul>
+                <li><a href="#about" id="navlink1">About</a></li>
+                <li><a href="#benefits" id="navlink2">Benefits</a></li>
+                <li><a href="#responsibility" id="navlink3">Responsibilities</a></li>
+                <li><a href="#faq" id="navlink4">FAQs</a></li>
+                <li><a id="navlink5">Login</a></li>
+                <li id="join-button">
+                    <a href="{% url 'register_single' %}" id="join-button-text">Join Now</a>
+                </li>
+            </ul>
+        </div>
+        <i class="fa fa-bars" onclick="showMenu()"></i>
+    </nav>
+    <div class="text-box">
+        <h2>Alcheringa 2023</h2>
+        <h1>Campus Ambassador</h1>
+        <p>
+            With the vision to bring out the essential Leadership traits in you, Alcheringa IIT Guwahati presents the
+            Campus Ambassador Program.
+
+        </p>
+        <a href="{% url 'register_single' %}" class="hero-btn">Join Now</a>
+    </div>
+</section>
+
+<section>
+
+
+</section>
+
+
+<div id="carouselExampleDark2" class="carousel carousel-dark slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active" data-bs-interval="10000">
+            <div class="iframe-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/xSDlUEJ22vU"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+
+            <div class="video-text">
+                <p style="font-weight:bold;font-size:2rem">Aftermovie, Alcheringa 2020</p>
+            </div>
+        </div>
+        <div class="carousel-item" data-bs-interval="2000">
+            <div class="iframe-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/b1Xq6ofywkk"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+
+            <div class="video-text">
+                <p style="font-weight:bold;font-size:2rem">Aftermovie, Alcheringa 2019</p>
+            </div>
+        </div>
+        <div class="carousel-item">
+            <div class="iframe-container">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/rfIcKj7Qfno"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen></iframe>
+            </div>
+
+            <div class="video-text">
+                <p style="font-weight:bold;font-size:2rem">Aftermovie, Alcheringa 2018</p>
+            </div>
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark2" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark2" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+<section id="about">
+    <div>
+        <p class="joining">
+            Who is an Alcheringa Campus Ambassador?
+        </p>
+        <p class="text">
+            Campus Ambassadors are the key players of IIT Guwahati's Alcheringa capacity building and youth outreach
+            programme. With the insight of bringing out the essence of an authentic leader within you . Along with a
+            host of valuable experiences and reassurance
+            from Team Alcheringa, come forward and take up the opportunity to plan , organise and execute exciting
+            events. Join a community that engulfs you with moments that refines your managerial and communicative
+            skills.
+        </p>
+    </div>
+</section>
+
+<section id="benefits">
+    <div>
+        <p class="joining">Why should you join?</p>
+    </div>
+    <div class="benefit1">
+        <div>
+            <img src="{% static 'images/perspaleta1_0016.png' %}" />
+            <h2>Level-wise Certification</h2>
+            <p>Platinum Certificate (Top 5 CAs)</p>
+        </div>
+        <div>
+            <img src="{% static 'images\perspaleta1_0003.png' %}" />
+            <h2>Exciting Prizes</h2>
+            <p>
+                Prizes worth 1.85 lakhs to be won<br />Certified Internships and Workshops.
+            </p>
+        </div>
+        <div>
+            <img src="{% static 'images\Luggage.png' %}" />
+            <h2>Travel Reimbursement
+            </h2>
+            <p>
+                Get travel reimbursement upto 100% for your trip to <br> IIT Guwahati during Alcheringa
+            </p>
+        </div>
+    </div>
+    <div class="benefit2">
+        <div>
+            <img src="{% static 'images\perspaleta2.png' %}" />
+            <h2>Pronites Pass</h2>
+            <p>Get direct entry to pronites</p>
+        </div>
+        <div>
+            <img src="{% static 'images\Frame 144.png' %}" />
+            <h2>Join the Team
+            </h2>
+            <p>
+                A chance to be part of Alcher’s Execution Team<br />
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="responsibility">
+    <div id="blue">
+        <p id="res">What will be your responsibilities?</p>
+        <div id="man">
+            <img src="{% static 'images\marketing-campaign-3025712-2526910.png' %}" alt="Man" />
+            <div class="box-text">
+                <div>
+                    <h2>College Branding</h2>
+                    <p>
+                        Take the lead in your college for Alcheringa and actively publicise us around you by using your
+                        promoting and showcasing skills. Take the chance and give professional presentations to key
+                        clubs and social groups on your Campus.
+
+                    </p>
+                </div>
+                <div>
+                    <h2>City Eliminations</h2>
+                    <p>
+                        Be the one in the lead to bring out the star performer among the rest of your city. Plan,
+                        Organise and be a part of Alcheringa's executive team to smoothen the flow of City elimination.
+
+                    </p>
+                </div>
+                <div>
+                    <h2>Increasing Reach</h2>
+                    <p>
+                        Use your rapport skills to make Alcheringa bigger than ever by helping us reach different
+                        cultural societies of colleges (Music, Drama, Dance etc..).
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="join">
+            <div>
+                <img src="{% static 'images\perspaleta1_0008.png' %}" />
+                <h2 style="color: #ffffff">Complete Tasks</h2>
+            </div>
+            <!-- <div>
+                <img src="{% static 'images\perspaleta1_0031.png' %}" />
+                <h2 style="color: #ffffff">Share Posts</h2>
+                <p style="color: #ffffff">
+                    Feel the pride and honor of being<br />the leader of champions
+                </p>
+            </div> -->
+            <div>
+                <img src="{% static 'images\perspaleta1_0015.png' %}" />
+                <h2 style="color: #ffffff">Get Registrations</h2>
+            </div>
+            <div>
+                <img src="{% static 'images\perspaleta1_0037.png' %}" />
+                <h2 style="color: #ffffff">Suggest Ideas</h2>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--<section id="faq">
+        <div>
+            <p class="joining">Past offers</p>
+        </div>
+        <div class="join">
+            <div>
+                <img src="{% static 'images/perspaleta1_0016.png' %}" />
+                <h2>Level-wise Certification</h2>
+                <p>Platinum Certificate (Top 5 CAs)</p>
+            </div>
+            <div>
+                <img src="{% static 'images\perspaleta1.png' %}" />
+                <h2>Level-wise Certification</h2>
+                <p>Feel the pride and honor of being<br />the leader of champions</p>
+            </div>
+            <div>
+                <img src="{% static 'images\perspaleta1_0003.png' %}" />
+                <h2>Level-wise Certification</h2>
+                <p>
+                    Prizes worth 2.2 lakhs to be won<br />Certified Internships and
+                    Workshops.
+                </p>
+            </div>
+        </div>
+
+    </section>-->
+
+<section>
+    <div>
+        <p class="joining">
+            Join as a Team or Solo
+        </p>
+        <p class="text" style="color: #707683;">
+            For the first time ever, you can now work as a team of two to make your CA<br />experience even better. You
+            can still join solo as well.
+        </p>
+    </div>
+
+    <div class="join flex sm:flex-row" style="justify-content: flex-start;">
+        <img class="ml-0.5 mr-0.5" id="fly" src="{% static 'images/Graphic2.png' %}" />
+        <div>
+
+            <div class="flex mx-auto rounded overflow-hidden mt-6 -ml-10 mb-8">
+                <button class="py-1 px-4 border-b-4 focus:outline-none"
+                    style="border-color: #334D6E; color: #334D6E;">Team</button>
+                <button class="py-1 px-4 focus:outline-none" style="color: #90A0B7;">Solo</button>
+            </div>
+            <ul class="list-disc">
+                <li class="mb-4" style="color: #707683;">
+                    Play as a team to increase collaborations and allows for brainstorming. As a consequence, develop
+                    more ideas which increase productivity.
+                </li>
+                <li class="mb-4" style="color: #707683;">
+                    Working as a Team gives a chance to look at a problem from multiple angles, thus creating a greater
+                    multitude of solutions. Teamwork makes members more open and enables learning of different cultures.
+                </li>
+                <li class="mb-4" style="color: #707683;">
+                    Teamwork encourages communication among the team, enhances socialising traits, and helps to build
+                    your rapport skills.
+                </li>
+                <li class="mb-4" style="color: #707683;">
+                    Working as a team makes you learn faster.
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</section>
+
+
+<section id="faq">
+    <div>
+        <p class="joining">FAQs</p>
+    </div>
+    <div class="accordion" id="accordionPanelsStayOpenExample">
+
+        <p>
+        <div class="accordian-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="false"
+                    aria-controls="panelsStayOpen-collapseOne">
+                    Who can apply?
+                </button>
+            </h2>
+            <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse"
+                aria-labelledby="panelsStayOpen-headingOne">
+                <div class="accordion-body">
+                    Students from all colleges across the globe are welcome to apply. </div>
+            </div>
+        </div>
+        </p>
+
+        <p>
+        <div class="accordion-item ">
+            <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false"
+                    aria-controls="panelsStayOpen-collapseTwo">
+                    How and when can I apply? What happens after I apply?
+                </button>
+            </h2>
+            <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse"
+                aria-labelledby="panelsStayOpen-headingTwo">
+                <div class="accordion-body">
+                    You can apply through our website as soon as the portal is active. You will be notified after you
+                    successfully register. Then you can start contributing and working immediately on your tasks.
+                </div>
+            </div>
+        </div>
+        </p>
+
+        <p>
+        <div class="accordion-item ">
+            <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false"
+                    aria-controls="panelsStayOpen-collapseThree">
+                    What is my responsibility being a part of the program?
+                </button>
+            </h2>
+            <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse"
+                aria-labelledby="panelsStayOpen-headingThree">
+                <div class="accordion-body">
+                    As a part of the program, you start at Novice level and complete various tasks such as Submitting
+                    contacts of individuals or groups of participants, increasing social media engagement, strategizing
+                    and branding on campus. </div>
+            </div>
+        </div>
+        </p>
+        <p>
+        <div class="accordion-item ">
+            <h2 class="accordion-header" id="panelsStayOpen-headingFour">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false"
+                    aria-controls="panelsStayOpen-collapseFour">
+                    What are the different levels & how does one go to the next levels? </button>
+            </h2>
+            <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse"
+                aria-labelledby="panelsStayOpen-headingFour">
+                <div class="accordion-body">
+                    There are 4 levels in total (Bronze, Silver, Gold and Platinum), after successful completion of
+                    tasks in each level and earning enough points you would get upgraded to the next level </div>
+            </div>
+        </div>
+        </p>
+        <p>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingFive">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#panelsStayOpen-collapseFive" aria-expanded="false"
+                    aria-controls="panelsStayOpen-collapseFive">
+                    Can there be multiple members from one college? </button>
+            </h2>
+            <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse"
+                aria-labelledby="panelsStayOpen-headingFive">
+                <div class="accordion-body">
+                    Yes, multiple students can join the Campus Ambassador program from one college. You can join and
+                    work as a team consisting of one senior and a junior. </div>
+            </div>
+        </div>
+        </p>
+        <p>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingSix">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#panelsStayOpen-collapseSix" aria-expanded="false"
+                    aria-controls="panelsStayOpen-collapseSix">
+                    Is there a cost to participate?
+                </button>
+            </h2>
+            <div id="panelsStayOpen-collapseSix" class="accordion-collapse collapse"
+                aria-labelledby="panelsStayOpen-headingSix">
+                <div class="accordion-body">
+                    There is no fee to participate in the Campus Ambassador Program; it's entirely free! </div>
+            </div>
+        </div>
+        </p>
+        <p>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingSeven">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#panelsStayOpen-collapseSeven" aria-expanded="false"
+                    aria-controls="panelsStayOpen-collapseSeven">
+                    How much time will I have to dedicate? </button>
+            </h2>
+            <div id="panelsStayOpen-collapseSeven" class="accordion-collapse collapse"
+                aria-labelledby="panelsStayOpen-headingSeven">
+                <div class="accordion-body">
+                    On average, you should put in 2 hours every week. The core aspects are commitment and consistency.
+                </div>
+            </div>
+        </div>
+        </p>
+        <p>
+        <div class="accordion-item ">
+            <h2 class="accordion-header" id="panelsStayOpen-headingEight">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#panelsStayOpen-collapseEight" aria-expanded="false"
+                    aria-controls="panelsStayOpen-collapseEight">
+                    What does being a campus ambassador imply? </button>
+            </h2>
+            <div id="panelsStayOpen-collapseEight" class="accordion-collapse collapse"
+                aria-labelledby="panelsStayOpen-headingEight">
+                <div class="accordion-body">
+                    You will be the alcheringa'22 spokesperson at your institution and the first point of contact for
+                    any concerns that your college students may have </div>
+            </div>
+        </div>
+        </p>
+        <p>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingNine">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#panelsStayOpen-collapseNine" aria-expanded="false"
+                    aria-controls="panelsStayOpen-collapseNine">
+                    What advantages do I gain from this? </button>
+            </h2>
+            <div id="panelsStayOpen-collapseNine" class="accordion-collapse collapse"
+                aria-labelledby="panelsStayOpen-headingNine">
+                <div class="accordion-body">
+                    In addition to the incentives, awards, and the certification, it aids in the expansion of your
+                    network both on and off campus, as well as the improvement of your management and communication
+                    abilities. </div>
+            </div>
+        </div>
+        </p>
+        <p>
+        <div class="accordion-item">
+            <h2 class="accordion-header" id="panelsStayOpen-headingTen">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#panelsStayOpen-collapseTen" aria-expanded="false"
+                    aria-controls="panelsStayOpen-collapseTen">
+                    What are City eliminations?</button>
+            </h2>
+            <div id="panelsStayOpen-collapseTen" class="accordion-collapse collapse"
+                aria-labelledby="panelsStayOpen-headingTen">
+                <div class="accordion-body">
+                    City eliminations are basically Alcher Prelims conducted in major cities such as Delhi, Lucknow,
+                    Bhopal, etc, to bring out the best talent in these regions. The winners of these city eliminations
+                    will be getting travel reimbursement and exciting prizes to come participate in North East’s biggest
+                    Cultural Fest Alcheringa.
+                </div>
+            </div>
+        </div>
+        </p>
+    </div>
+
+    </div>
+</section>
+</section>
+<footer class="text-gray-600 body-font " style="background-color: #109CF1;">
+    <div
+        class="container px-5 py-16 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col ">
+        <div class="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left ">
+            <a href="# "><img src="{% static 'images/logo2.png' %} " alt="Logo " /></a>
+        </div>
+        <div class="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-left ">
+            <div class="lg:w-1/2 md:w-1/2 w-full px-4 ">
+                <h2 class="title-font font-medium text-white text-sm mb-3 ml-6 text-xl ">Links</h2>
+                <ul class="list-none mb-10 ">
+                    <li class="text-left " style="margin-bottom: 0.6rem; ">
+                        <a href='#about' class="text-white no-underline hover:text-gray-800 hover-text ">About</a>
+                    </li>
+                    <li class="text-left " style="margin-bottom: 0.6rem; ">
+                        <a href='#benefits' class="text-white no-underline hover:text-gray-800 ">Benefits</a>
+                    </li>
+                    <li class="text-left " style="margin-bottom: 0.6rem; ">
+                        <a href='#responsibility'
+                            class="text-white no-underline hover:text-gray-800 ">Responsibilities</a>
+                    </li>
+                    <li class="text-left " style="margin-bottom: 0.6rem; ">
+                        <a href='#faq' class="text-white no-underline hover:text-gray-800 ">FAQs</a>
+                    </li>
+                    <li class="text-left " style="margin-bottom: 0.6rem; ">
+                        <a href="https://alcheringa.in/"
+                            class="text-white no-underline hover:text-gray-800 ">alcheringa.in</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="lg:w-1/2 md:w-1/2 w-full px-4 ">
+                <h2 class="title-font font-medium text-white text-sm mb-3 ml-6 text-xl ">Contact</h2>
+                <ul class="list-none mb-10 ">
+                    <li class="text-left " style="margin-bottom: 0.6rem; ">
+                        <p class="text-white ">Siddhant Singh | PR Head <br>+91 9310859978</p>
+                    </li>
+                    <li class="text-left pb-6 " style="margin-bottom: 0.6rem; ">
+                        <p class="text-white ">Danda Akshara | PR Head <br>+91 9908991939</p>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+        <div class="lg:w-1/3 md:w-1/2 w-full px-4 ">
+            <h2 class="title-font font-medium text-white text-sm mb-3 ml-4 text-xl md:mt-4 ">Follow us</h2>
+            <div class="flex flex-row flex-wrap ">
+                <div class="ml-5 ">
+                    <a href="https://www.facebook.com/alcheringaiitg" class="text-gray-500" target="_blank">
+                        <img src="{% static 'images/FB-icon.png' %} " alt="FB-icon ">
+                    </a>
+                </div>
+                <div class="ml-5 ">
+                    <a href="https://www.instagram.com/alcheringaiitg/" class="text-gray-500 " target="_blank">
+                        <img src="{% static 'images/IG-icon.png' %} " alt="IG-icon ">
+                    </a>
+                </div>
+                <div class="ml-5 ">
+                    <a href="https://www.youtube.com/c/AlcheringaIITG" class="text-gray-500 " target="_blank">
+                        <img src="{% static 'images/YT-icon.png' %} " alt="YT-icon ">
+                    </a>
+                </div>
+                <div class="ml-5 ">
+                    <a href="https://www.linkedin.com/company/alcheringaiitguwahati/" target="_blank"
+                        class="text-gray-500 ">
+                        <img src="{% static 'images/linkedin (1).png' %} " alt="linkedin-icon " style="width:35px ;">
+                    </a>
+                </div>
+                <div class="ml-5 ">
+                    <a href="http://twitter.com/alcheringaiitg" target="_blank" class="text-gray-500 ">
+                        <img src="{% static 'images/twitter.png' %} " alt="twitter-icon " style="width:35px ;">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center pb-4 ">
+        <p class="font-normal text-base text-center text-white mb-2 ">COPYRIGHT © 2021 ALCHERINGA. ALL RIGHTS RESERVED
+        </p>
+        <p class="font-normal text-base text-center text-white ">Designed by Team Creatives. Developed by Team WebOps.
+        </p>
+
+    </div>
+</footer>
+</body>
+
+
+
+{%include 'users/login.html' %}
+<script>
+    var navLinks = document.getElementById("navLinks");
+
+    function showMenu() {
+        navLinks.style.right = "0 ";
+    }
+
+    function hideMenu() {
+        navLinks.style.right = "-200px ";
+    }
+</script>
+<script src="{% static 'js/home_main.js' %} "></script>
+
+
+{%endblock%}

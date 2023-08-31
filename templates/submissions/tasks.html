@@ -1,0 +1,47 @@
+{% extends '../basic.html'%}
+{%block title%}Tasks | Alcheringa {%endblock%}
+{% block body %}
+<body>
+    <div class="bg-blue-50 flex">
+        {% include "../navbar.html" %}
+        <div class="flex">
+            <div class="flex-grow">
+                <!-- tasks -->
+                {% include "dashboard/components/tasks.html" %}
+
+                {% include "dashboard/components/recent_posts_for_phone.html" %}
+
+            </div>
+            <div class="bg-white w-80 border-gray-400 rounded m-4 hidden lg:block">
+                {% include "dashboard/components/recent_posts_for_pc.html" %}
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+</body>
+{%endblock%}
+{% block script %}
+<script>
+    const btn = document.querySelector(".mobile");
+    const sidebar = document.querySelector(".navbar");
+    const arrow = document.querySelector(".side");
+    const middle = document.querySelector(".Middle");
+    // const alcher = document.querySelector(".Alcher");
+
+
+    // alcher.addEventListener("click", () => {
+    //     sidebar.classList.toggle("-translate-x-full"),
+    //         middle.classList.add("sm:mx-96"),
+    //         btn.classList.add("invisible")
+    // });
+    arrow.addEventListener("click", () => {
+        middle.classList.remove("sm:mx-96")
+        sidebar.classList.toggle("-translate-x-full"),
+            btn.classList.remove("invisible")
+    })
+
+
+</script>
+{% endblock %}
